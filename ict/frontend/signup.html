@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Panel</title>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <style>
+        html , body , input , button {
+            font-family: Poppins , Vazirmatn, sans-serif;
+        }
+    </style>
+    <link rel="stylesheet" href="css/stylecreate.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900">
+    <div class="min-h-screen bg-gray-800 flex items-center justify-center">
+        <div class="bg-gray-700 p-8 rounded-lg shadow-md w-96">
+            <img src="picture/picturelogo1.jpeg" alt="image" class="image"/>
+            <h2 class="text-2xl font-bold mb-6 text-center text-white">ثبت نام</h2>
+            <form action="/backend" method="post">
+                <div class="mb-4">
+                    <label for="username" class="block text-gray-300 text-sm font-bold mb-2">نام کاربری</label>
+                    <input type="text" id="username" name="username" placeholder="نام کاربری" class="w-full px-3 py-2 bg-gray-600 border border-gray-500 rounded-md focus:outline-none focus:ring focus:border-blue-300 text-white" required>
+                </div>
+                <div class="mb-4">
+                    <label for="password" class="block text-gray-300 text-sm font-bold mb-2">رمز عبور</label>
+                    <input type="password" id="password" name="password" placeholder="رمز عبور" class="w-full px-3 py-2 bg-gray-600 border border-gray-500 rounded-md focus:outline-none focus:ring focus:border-blue-300 text-white" required>
+                </div>
+                <div class="mb-6">
+                    <label for="confirm-password" class="block text-gray-300 text-sm font-bold mb-2">تکرار رمز</label>
+                    <input type="password" id="confirm-password" placeholder="تکرار رمز" name="confirm-password" class="w-full px-3 py-2 bg-gray-600 border border-gray-500 rounded-md focus:outline-none focus:ring focus:border-blue-300 text-white" required>
+                </div>
+                <div style="display:none">
+                    <input type="password" id="type" name="type" class="w-full px-3 py-2 bg-gray-600 border border-gray-500 rounded-md focus:outline-none focus:ring focus:border-blue-300 text-white">
+                    <script>
+                        document.getElementById("type").value = "signup";
+                    </script>
+                </div>
+                <div class="flex items-center justify-between">
+                    <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                        ثبت نام
+                    </button>
+                    <a href="./login.html" class="inline-block align-baseline font-bold text-sm text-blue-400 hover:text-blue-300">
+                        اکانت فعال دارم ؟
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

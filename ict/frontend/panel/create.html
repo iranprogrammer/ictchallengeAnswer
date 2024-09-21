@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deploy App</title>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #1f2937;
+            font-family: 'Arial', sans-serif;
+            color: #e5e7eb;
+        }
+        .form-container {
+            background: rgba(31, 41, 55, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        .form-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .input-field {
+            transition: all 0.3s ease;
+            background-color: #374151;
+            color: #e5e7eb;
+            border-color: #4b5563;
+        }
+        .input-field:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            border-color: #6366f1;
+        }
+        .submit-button {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            transition: all 0.3s ease;
+        }
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(79, 70, 229, 0.5);
+        }
+        .code-box {
+            background-color: #374151;
+            border: 1px solid #4b5563;
+            border-radius: 4px;
+            padding: 10px;
+            margin-top: 10px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            color: #e5e7eb;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 flex items-center justify-center min-h-screen">
+    <div id="particles-js" class="absolute inset-0"></div>
+    <div class="relative z-10 form-container p-8 w-96">
+        <h2 class="text-2xl font-bold mb-6 text-center text-gray-100">Deploy Your App</h2>
+        <form action="createform.php" method="post" class="space-y-6">
+            <div>
+                <label for="username" class="block text-sm font-medium text-gray-300 mb-1">Username</label>
+                <input type="text" name="username" id="username" class="input-field mt-1 block w-full px-3 py-2 border rounded-md text-sm shadow-sm placeholder-gray-500
+                    focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500">
+            </div>
+            <div>
+                <label for="password" class="block text-sm font-medium text-gray-300 mb-1">Password</label>
+                <input type="password" name="password" id="password" class="input-field mt-1 block w-full px-3 py-2 border rounded-md text-sm shadow-sm placeholder-gray-500
+                    focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500">
+            </div>
+            <div>
+                <label for="appname" class="block text-sm font-medium text-gray-300 mb-1">App Name</label>
+                <input type="text" name="appname" id="appname" class="input-field mt-1 block w-full px-3 py-2 border rounded-md text-sm shadow-sm placeholder-gray-500
+                    focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500">
+            </div>
+            <div>
+                <label for="appurl" class="block text-sm font-medium text-gray-300 mb-1">App URL</label>
+                <input type="text" name="appurl" id="appurl" class="input-field mt-1 block w-full px-3 py-2 border rounded-md text-sm shadow-sm placeholder-gray-500
+                    focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500">
+            </div>
+            <div>
+                <label for="apptype" class="block text-sm font-medium text-gray-300 mb-1">App Type</label>
+                <select name="apptype" id="apptype" class="input-field mt-1 block w-full px-3 py-2 border rounded-md text-sm shadow-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500">
+                    <option value="our_code">Our Code</option>
+                    <option value="your_code">Your Code</option>
+                </select>
+            </div>
+            <div id="codeBox" class="code-box hidden">
+                <textarea id="userCode" name="userCode" rows="10" class="w-full bg-transparent border-none focus:outline-none resize-y" placeholder="Enter your code here..."></textarea>
+            </div>
+            <button type="submit" class="submit-button w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Deploy
+            </button>
+        </form>
+    </div>
+    <script>
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: "#4f46e5" },
+                shape: { type: "circle", stroke: { width: 0, color: "#000000" }, polygon: { nb_sides: 5 } },
+                opacity: { value: 0.5, random: false, anim: { enable: false, speed: 1, opacity_min: 0.1, sync: false } },
+                size: { value: 3, random: true, anim: { enable: false, speed: 40, size_min: 0.1, sync: false } },
+                line_linked: { enable: true, distance: 150, color: "#4f46e5", opacity: 0.4, width: 1 },
+                move: { enable: true, speed: 6, direction: "none", random: false, straight: false, out_mode: "out", bounce: false, attract: { enable: false, rotateX: 600, rotateY: 1200 } }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "repulse" },
+                    onclick: { enable: true, mode: "push" },
+                    resize: true
+                },
+                modes: {
+                    grab: { distance: 400, line_linked: { opacity: 1 } },
+                    bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 },
+                    repulse: { distance: 200, duration: 0.4 },
+                    push: { particles_nb: 4 },
+                    remove: { particles_nb: 2 }
+                }
+            },
+            retina_detect: true
+        });
+
+        document.getElementById('apptype').addEventListener('change', function() {
+            var codeBox = document.getElementById('codeBox');
+            if (this.value === 'your_code') {
+                codeBox.classList.remove('hidden');
+            } else {
+                codeBox.classList.add('hidden');
+                document.getElementById('userCode').value = '';
+            }
+        });
+    </script>
+</body>
+</html>

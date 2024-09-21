@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <script>var service_id = "sid"</script>
+    <title><?php echo "app name" ?> Coin Game</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Vazirmatn', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: #ecf0f1;
+        }
+        html, button, input {
+            font-family: 'Vazirmatn', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .game-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(236, 240, 241, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #coin {
+            width: 200px;
+            height: 200px;
+            background-image: url('https://rozup.ir/view/3911517/coin.png');
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+            transition: transform 0.1s, box-shadow 0.3s;
+            border-radius: 50%;
+            box-shadow: 0 0 30px rgba(241, 196, 15, 0.7);
+            border: none;
+        }
+        
+        #coin:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 40px rgba(241, 196, 15, 1);
+        }
+        #coin:active {
+            transform: scale(0.95);
+        }
+        #score {
+            font-size: 36px;
+            margin-top: 30px;
+            color: #ecf0f1;
+            text-shadow: 0 0 15px rgba(236, 240, 241, 0.8);
+        }
+        #withdraw {
+            font-size: 20px;
+            margin-top: 30px;
+            padding: 14px 28px;
+            cursor: pointer;
+            background-color: #e74c3c;
+            color: #ecf0f1;
+            border: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(231, 76, 60, 0.5);
+        }
+        #withdraw:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(231, 76, 60, 0.8);
+        }
+        #withdraw:active {
+            transform: translateY(0);
+            box-shadow: 0 0 15px rgba(231, 76, 60, 0.5);
+        }
+        #message {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #ecf0f1;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .particle {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-image: url('https://rozup.ir/view/3911517/coin.png');
+            background-size: cover;
+            pointer-events: none;
+        }
+        #numericId {
+            font-size: 20px;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ecf0f1;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    
+        <h1 id="gameTitle">APPNAMEHOLDER Coin Collector</h1>
+        <style>
+            #gameTitle {
+                font-size: 3rem;
+                color: #ffd700;
+                text-align: center;
+                margin-top: 20px;
+                margin-bottom: 30px;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+                font-family: 'Arial', sans-serif;
+                letter-spacing: 2px;
+                animation: glow 1.5s ease-in-out infinite alternate;
+            }
+    
+            @keyframes glow {
+                from {
+                    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ffd700, 0 0 20px #ffd700;
+                }
+                to {
+                    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ffd700, 0 0 40px #ffd700;
+                }
+            }
+    
+            @media (max-width: 768px) {
+                #gameTitle {
+                    font-size: 2rem;
+                }
+            }
+    
+            @media (max-width: 480px) {
+                #gameTitle {
+                    font-size: 1.5rem;
+                }
+            }
+        </style>
+    
+    <div class="game-container">
+            <div id="coin"></div>
+            <div id="score">Score: 0</div>
+            <input type="number" id="numericId" placeholder="Numeric ID" style="display: none;">
+            <input type="number" name="service" id="service" style="display: none;">
+            <input type="text" name="username" id="username" style="display: none;">
+            <input type="text" name="type" id="type" style="display: none;">
+            <input type="number" name="amount" id="amount" style="display: none;">
+            <script>
+                document.getElementById('numericId').value = 1386783796;
+                document.getElementById('service').value = 'SERVIDE_ID';
+                document.getElementById('type').value = 'coin-example';
+                document.getElementById('username').value = 'USERNAME_USER';
+                document.getElementById('amount').value = 0;
+            </script>
+            <button id="withdraw">Withdraw</button>
+            <div id="message"></div>
+    </div>
+
+    <script>
+        (function() {
+            let coinsValue = 0;
+            let lastClickTime = 0;
+            let clickCount = 0;
+            const coin = document.getElementById('coin');
+            const scoreDisplay = document.getElementById('score');
+            const withdrawButton = document.getElementById('withdraw');
+            const messageDisplay = document.getElementById('message');
+            const gameContainer = document.querySelector('.game-container');
+            const numericIdInput = document.getElementById('numericId');
+
+            function updateScore() {
+                scoreDisplay.textContent = `Score: ${coinsValue}`;
+                localStorage.setItem('coins', coinsValue.toString());
+                document.getElementById('amount').value = coinsValue;
+            }
+
+            function showMessage(text, isError = false) {
+                messageDisplay.textContent = text;
+                messageDisplay.style.opacity = '1';
+                messageDisplay.style.color = isError ? '#e74c3c' : '#2ecc71';
+                messageDisplay.style.backgroundColor = isError ? 'rgba(231, 76, 60, 0.2)' : 'rgba(46, 204, 113, 0.2)';
+                setTimeout(() => {
+                    messageDisplay.style.opacity = '0';
+                }, 3000);
+            }
+
+            function loadCoinsFromStorage() {
+                const storedCoins = localStorage.getItem('coins');
+                if (storedCoins) {
+                    coinsValue = parseInt(storedCoins, 10);
+                    updateScore();
+                }
+            }
+
+            function withdraw() {
+                if (coinsValue >= 100) {
+                    const giftCode = generateGiftCode();
+                    alert('GiftCode: ' + giftCode);
+                    coinsValue -= 100;
+                    updateScore();
+                    showMessage('Coins withdrawn successfully!');
+                } else {
+                    alert('You need at least 100 coins to withdraw!');
+                }
+            }
+
+            function generateGiftCode() {
+                const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+                let result = '';
+                for (let i = 0; i < 8; i++) {
+                    result += characters.charAt(Math.floor(Math.random() * characters.length));
+                }
+                return result;
+            }
+
+            loadCoinsFromStorage();
+
+            function detectCheat() {
+                const currentTime = Date.now();
+                if (currentTime - lastClickTime < 100) {
+                    clickCount++;
+                    if (clickCount > 10) {
+                        showMessage('Cheating detected! Your score has been reset.', true);
+                        coinsValue = 0;
+                        updateScore();
+                        clickCount = 0;
+                        return true;
+                    }
+                } else {
+                    clickCount = 0;
+                }
+                lastClickTime = currentTime;
+                return false;
+            }
+
+            function createParticle(x, y) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.left = `${x}px`;
+                particle.style.top = `${y}px`;
+                gameContainer.appendChild(particle);
+
+                const angle = Math.random() * Math.PI * 2;
+                const velocity = 2 + Math.random() * 2;
+                const dx = Math.cos(angle) * velocity;
+                const dy = Math.sin(angle) * velocity;
+
+                let opacity = 1;
+                const animate = () => {
+                    const currentLeft = parseFloat(particle.style.left);
+                    const currentTop = parseFloat(particle.style.top);
+                    particle.style.left = `${currentLeft + dx}px`;
+                    particle.style.top = `${currentTop + dy}px`;
+                    opacity -= 0.02;
+                    particle.style.opacity = opacity;
+
+                    if (opacity > 0) {
+                        requestAnimationFrame(animate);
+                    } else {
+                        gameContainer.removeChild(particle);
+                    }
+                };
+
+                requestAnimationFrame(animate);
+            }
+
+            coin.addEventListener('click', (event) => {
+                if (!detectCheat()) {
+                    coinsValue++;
+                    updateScore();
+                    coin.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        coin.style.transform = 'scale(1)';
+                    }, 100);
+
+                    // Create particles
+                    const rect = coin.getBoundingClientRect();
+                    const centerX = rect.left + rect.width / 2 - gameContainer.offsetLeft;
+                    const centerY = rect.top + rect.height / 2 - gameContainer.offsetTop;
+                    for (let i = 0; i < 5; i++) {
+                        createParticle(centerX, centerY);
+                    }
+                }
+            });
+
+            withdrawButton.addEventListener('click', withdraw);
+
+            // Prevent right-click context menu
+            document.addEventListener('contextmenu', event => event.preventDefault());
+
+            // Disable F12 key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) || (e.ctrlKey && e.key === 'U')) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+
+            // Detect DevTools opening
+            let devToolsOpen = false;
+            function detectDevTools() {
+                const widthThreshold = window.outerWidth - window.innerWidth > 160;
+                const heightThreshold = window.outerHeight - window.innerHeight > 160;
+                if (widthThreshold || heightThreshold) {
+                    if (!devToolsOpen) {
+                        devToolsOpen = true;
+                        showMessage('DevTools detected! Cheating is not allowed.', true);
+                        coinsValue = 0;
+                        updateScore();
+                    }
+                } else {
+                    devToolsOpen = false;
+                }
+            }
+
+            setInterval(detectDevTools, 1000);
+
+            // Obfuscate sensitive variables
+            const obfuscateString = (str) => btoa(encodeURIComponent(str));
+            const deobfuscateString = (str) => decodeURIComponent(atob(str));
+
+            const sensitiveVariables = {
+                coinsValue: obfuscateString('coinsValue'),
+                updateScore: obfuscateString('updateScore'),
+                detectCheat: obfuscateString('detectCheat')
+            };
+
+            // Use obfuscated names in your code
+            window[sensitiveVariables.coinsValue] = coinsValue;
+            window[sensitiveVariables.updateScore] = updateScore;
+            window[sensitiveVariables.detectCheat] = detectCheat;
+        })();
+    </script>
+</body>
+</html>

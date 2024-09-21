@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: linear-gradient(45deg, #0611de, #00a6d8, #ae00ff, #ff00ff);
+            background-size: 400% 400%;
+            animation: gradient 5s ease infinite;
+        }
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        header {
+            background: rgba(53, 66, 74, 0.8);
+            color: #ffffff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            margin: 20px 0;
+        }
+        nav a {
+            margin: 0 15px;
+            color: #ffffff;
+            text-decoration: none;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        .full-image {
+            width: 100%;
+             border-radius: 15px; /* Rounded corners */
+            margin: 20px 0; /* Space around the image */
+        }
+        .game {
+            background: #ffffff;
+            border: 1px solid #dddddd;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+        }
+        .game img {
+            width: 100px; /* Image width */
+            height: 100px; /* Image height */
+            margin-right: 20px; /* Space between image and text */
+            border-radius: 5px; /* Rounded corners */
+        }
+        footer {
+            background: rgba(53, 66, 74, 0.8);
+            color: #ffffff;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .footer-text {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        .footer-image {
+            width: 60px; /* Size of footer images */
+            height: 60px; /* Size of footer images */
+            border-radius: 10%; /* Rounded corners */
+            object-fit: cover; /* Cover the image area */
+            margin: 0 5px; /* Space between images */
+        }
+        /* Animation for logo */
+        .logo {
+            width: 150px;
+            height: auto;
+            margin-bottom: 10px;
+            border-radius: 50%; /* Round corners */
+            opacity: 0; /* Start with opacity 0 */
+            animation: fadeIn 2s forwards; /* Fade-in animation */
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1; /* Final opacity */
+            }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // PHP DATA ENTRY PLACE
+        var username = "YOUR_USERNAME"
+    </script>
+    <header>
+        <img src="./frontend/panel/logo.png" alt="Logo" class="logo">
+        <h1>Welcome to the Games Website</h1>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#games">Games</a>
+            <a href="#about">About</a>
+            <a href="loginpageict.html">login</a>
+        </nav>
+    </header>
+    <div class="container">
+        <img src="./frontend/panel/full_image.jpg" alt="Full Size Image" class="full-image"> <!-- Replace with your image URL -->
+        <section id="games">
+            <h2>Featured Games</h2>
+            <div class="game">
+                <img src="https://rozup.ir/view/3911517/coin.png" alt="Game 1">
+                <div>
+                    <h3><a href="./frontend/panel/coin.html">Coin Game</a></h3>
+                    <p>Click To Play Game</p>
+                </div>
+            </div>
+            <div class="game">
+                <img src="./frontend/panel/plus.png" alt="create" width="100">
+                <div>
+                    <h3><a href="./frontend/panel/create.html">Deploy new game</a></h3>
+                    <p>Create a new game</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <div class="footer-text">@iranprogrammer</div>
+        <div>
+            <img src="./frontend/panel/bale.png" alt="Image 1" class="footer-image"> <!-- Replace with your image URLs -->
+            <img src="./frontend/panel/telegram.png" alt="Image 2" class="footer-image">
+            <img src="./frontend/panel/eitta.png" alt="Image 3" class="footer-image">
+        </div>
+    </footer>
+</body>
+</html>

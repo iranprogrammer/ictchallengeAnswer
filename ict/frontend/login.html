@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Panel</title>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="stylesheet" href="css/stylelogin.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        html , body , input , button {
+            font-family: Poppins , Vazirmatn, sans-serif;
+        }
+    </style>
+
+</head>
+<body class="bg-gray-900">
+    <div class="min-h-screen bg-gray-800 flex items-center justify-center parent">
+        <div class="bg-gray-700 p-8 rounded-lg shadow-md w-96 narrow">
+            <img src="picture/picturelogo1.jpeg" alt="image" class="image"/>
+            <h2 class="text-2xl font-bold mb-6 text-center text-white">صفحه ورود</h2>
+            <form action="/backend" method="post">
+                    <div class="mb-4">
+                        <label for="username" class="block text-gray-300 text-sm font-bold mb-2">نام کاربری</label>
+                        <input type="text" id="username" name="username" placeholder="نام کاربری" class="w-full px-3 py-2 bg-gray-600 border border-gray-500 rounded-md focus:outline-none focus:ring focus:border-blue-300 text-white" required>
+                    </div>
+                    <div class="mb-6">
+                        <label for="password" class="block text-gray-300 text-sm font-bold mb-2">رمز عبور</label>
+                        <input type="password" id="password" name="password" placeholder="رمز عبور" class="w-full px-3 py-2 bg-gray-600 border border-gray-500 rounded-md focus:outline-none focus:ring focus:border-blue-300 text-white" required>
+                    </div>
+                    <div style="display:none">
+                        <input type="password" id="type" name="type" class="w-full px-3 py-2 bg-gray-600 border border-gray-500 rounded-md focus:outline-none focus:ring focus:border-blue-300 text-white">
+                        <script>
+                            document.getElementById("type").value = "login";
+                        </script>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                            ورود
+                        </button>
+                        <a href="#" class="inline-block align-baseline font-bold text-sm text-blue-400 hover:text-blue-300">
+                            فراموشی رمز ؟
+                        </a>
+                    </div>
+                </form>
+                <div class="mt-4 text-center">
+                    <a href="./signup.html" class="font-bold text-sm text-blue-400 hover:text-blue-300">
+                        ثبت نام
+                    </a>
+                </div>
+            </div>
+        </div>
+</body>
+</html>
